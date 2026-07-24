@@ -12,9 +12,9 @@ Label solar farms in the **YOLOv8-OBB** format, then auto-straighten every panel
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
 [![Stars](https://img.shields.io/github/stars/Chisoku/solar-obb-annotator?style=social)](https://github.com/Chisoku/solar-obb-annotator/stargazers)
 
-![auto-snap demo](assets/demo.gif)
+![guide-snap demo](assets/demo.gif)
 
-*Raw wobbly labels → aligned in one click.*
+*Put guides on the panel edges → the corners snap onto the white borders.*
 
 </div>
 

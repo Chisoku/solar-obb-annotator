@@ -1,9 +1,22 @@
-# Solar Panel OBB Annotator
+<div align="center">
 
-A **semi-automatic annotation tool for oriented bounding boxes (OBB) of solar panels** in top-down drone imagery.
-Label solar farms in the **YOLOv8-OBB** format, then let the tool straighten and align every panel to clean grid lines — with a guide-based GUI for fast manual touch-up.
+# 🛰️ Solar Panel OBB Annotator
 
-![Solar OBB Annotator — guide-based GUI](assets/gui.png)
+**Semi-automatic annotation of solar panels as oriented bounding boxes (OBB) in top-down drone imagery.**
+
+Label solar farms in the **YOLOv8-OBB** format, then auto-straighten every panel onto clean grid lines — with a guide-based GUI for fast manual touch-up.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
+[![Format: YOLOv8-OBB](https://img.shields.io/badge/format-YOLOv8--OBB-orange.svg)](#dataset-format-yolov8-obb)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
+[![Stars](https://img.shields.io/github/stars/Chisoku/solar-obb-annotator?style=social)](https://github.com/Chisoku/solar-obb-annotator/stargazers)
+
+![auto-snap demo](assets/demo.gif)
+
+*Raw wobbly labels → aligned in one click.*
+
+</div>
 
 ---
 
@@ -31,6 +44,8 @@ Hand/auto labels of solar panels are usually off by a few pixels at the corners,
 - ✋ Drag corners, ➕ add boxes, 🗑 delete boxes / individual guides.
 - **Undo / Redo** (`Ctrl+Z` / `Ctrl+Y`), spotlight hover, mark-as-done per image, delete image to trash.
 - Never overwrites your original labels — writes to a separate `labels_fixed/` folder.
+
+![GUI](assets/gui.png)
 
 ---
 

@@ -1,0 +1,23 @@
+# --- datasets / data (never commit the dataset) ---
+*.zip
+solar-segment-obb*/
+**/labels_fixed/
+**/labels_snapped/
+**/*_deleted/
+snap_done.json
+preview/
+preview_snap/
+
+# --- python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+
+# --- os / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

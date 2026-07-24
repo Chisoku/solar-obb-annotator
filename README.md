@@ -1,9 +1,9 @@
 # Solar Panel OBB Annotator
 
-A **semi‑automatic annotation tool for oriented bounding boxes (OBB) of solar panels** in top‑down drone imagery.
-Label solar farms in the **YOLOv8‑OBB** format, then let the tool straighten and align every panel to clean grid lines — with a guide‑based GUI for fast manual touch‑up.
+A **semi-automatic annotation tool for oriented bounding boxes (OBB) of solar panels** in top-down drone imagery.
+Label solar farms in the **YOLOv8-OBB** format, then let the tool straighten and align every panel to clean grid lines — with a guide-based GUI for fast manual touch-up.
 
-![overview](assets/overview.png)
+![Solar OBB Annotator — guide-based GUI](assets/gui.png)
 
 ---
 
@@ -11,14 +11,8 @@ Label solar farms in the **YOLOv8‑OBB** format, then let the tool straighten a
 
 Hand/auto labels of solar panels are usually off by a few pixels at the corners, so a perfectly regular grid of panels ends up as a wobbly set of boxes. This tool fixes that:
 
-* **Batch auto‑snap** — detects each panel row/strip, estimates its tilt, and snaps corners onto shared column/row lines.
-* **Guide‑based GUI** — draw (or auto‑generate) reference lines, then snap corners onto them; the corners stay attached and follow the guide when you move it.
-
-| Before (raw labels) | After auto‑snap |
-|---|---|
-| ![before/after](assets/autosnap_before_after.png) | |
-
-*(left = original labels, right = after auto‑snap — same crop)*
+* **Batch auto-snap** — detects each panel row/strip, estimates its tilt, and snaps corners onto shared column/row lines.
+* **Guide-based GUI** — draw (or auto-generate) reference lines, then snap corners onto them; the corners stay attached and follow the guide when you move it.
 
 ---
 
@@ -31,14 +25,12 @@ Hand/auto labels of solar panels are usually off by a few pixels at the corners,
 - Debug mode: before/after overlay images.
 
 **Interactive GUI (`snap_gui.py`)**
-- ✨ **Auto‑generate guides** for a strip you click — outer border = single line, inter‑panel gaps = double lines.
+- ✨ **Auto-generate guides** for a strip you click — outer border = single line, inter-panel gaps = double lines.
 - 📏 **Draw guides** freely (optional linked parallel companion), 🧲 **snap** corners to the nearest guide / intersection.
 - Corners **attach** to guides and follow when a guide is moved. Guide endpoints **magnetize** & can be **welded** to move together.
 - ✋ Drag corners, ➕ add boxes, 🗑 delete boxes / individual guides.
-- **Undo / Redo** (`Ctrl+Z` / `Ctrl+Y`), spotlight hover, mark‑as‑done per image, delete image to trash.
+- **Undo / Redo** (`Ctrl+Z` / `Ctrl+Y`), spotlight hover, mark-as-done per image, delete image to trash.
 - Never overwrites your original labels — writes to a separate `labels_fixed/` folder.
-
-![auto guides](assets/auto_guides.png)
 
 ---
 
@@ -54,7 +46,7 @@ pip install -r requirements.txt
 
 ---
 
-## Dataset format (YOLOv8‑OBB)
+## Dataset format (YOLOv8-OBB)
 
 ```
 <dataset>/
@@ -69,7 +61,7 @@ Each label line — 4 corners, normalized `0..1` by image width/height:
 class_id  x1 y1  x2 y2  x3 y3  x4 y4
 ```
 
-The corner order is auto‑detected geometrically (it does not have to be consistent).
+The corner order is auto-detected geometrically (it does not have to be consistent).
 
 ---
 
@@ -83,12 +75,12 @@ python snap_gui.py --labels <dataset>/train/labels \
                    --out    <dataset>/train/labels_fixed
 ```
 
-Or just run `python snap_gui.py` and click **“Mở thư mục…”** to pick the `labels` and `images` folders.
+Or just run `python snap_gui.py` and click **“Open folder…”** to pick the `labels` and `images` folders.
 Results are saved to `labels_fixed/` (originals untouched). Progress (“done” flags) is stored in `snap_done.json`.
 
-**Typical workflow:** ✨ click a strip to auto‑generate guides → nudge a few guides → 🧲 click to snap → ✋ fix stragglers → mark done → next image.
+**Typical workflow:** ✨ click a strip to auto-generate guides → nudge a few guides → 🧲 click to snap → ✋ fix stragglers → mark done → next image.
 
-### 2) Batch auto‑snap (no UI)
+### 2) Batch auto-snap (no UI)
 
 ```bash
 # one split
@@ -98,7 +90,7 @@ python snap_obb.py --labels <dataset>/train/labels --images <dataset>/train/imag
 python snap_obb.py --dataset <dataset> --debug-dir preview --debug-n 5
 ```
 
-### 3) Matplotlib‑only editor (fallback, no Tk‑GUI OpenCV needed)
+### 3) Matplotlib-only editor (fallback)
 
 ```bash
 python snap_editor.py --labels <dataset>/train/labels --images <dataset>/train/images --out <dataset>/train/labels_fixed
@@ -111,15 +103,15 @@ python snap_editor.py --labels <dataset>/train/labels --images <dataset>/train/i
 | Action | How |
 |---|---|
 | Zoom | **Ctrl + mouse wheel** (or `+` / `−` buttons) |
-| Pan | **Left‑drag on empty area**, right‑drag, or two‑finger scroll |
-| Modes | ✋ Edit · 📏 Draw guide · ✨ Auto‑guide · 🧲 Snap · ➕ Add box |
+| Pan | **Left-drag on empty area**, right-drag, or two-finger scroll |
+| Modes | ✋ Edit · 📏 Draw guide · ✨ Auto-guide · 🧲 Snap · ➕ Add box |
 | Snap corners | 🧲 mode → **click** once (corners within 5 px snap to nearest guide/intersection) |
 | Move a guide | ✋ mode → drag the pink endpoint (yellow ring = grabbable) |
 | Weld / unweld guide endpoints | drag endpoints together to weld · **Ctrl+H** to unweld |
 | Undo / Redo | **Ctrl+Z** / **Ctrl+Y** |
 | Delete box / guide | **D** / **Del** while hovering it |
-| Next / Prev image | **N** / **B** (auto‑saves) · or click the file list |
-| Save | **S** (also auto‑saves on navigation) |
+| Next / Prev image | **N** / **B** (auto-saves) · or click the file list |
+| Save | **S** (also auto-saves on navigation) |
 
 > **Note:** the GUI labels are currently in Vietnamese; they are plain strings in `snap_gui.py` and easy to localize.
 
@@ -129,8 +121,8 @@ python snap_editor.py --labels <dataset>/train/labels --images <dataset>/train/i
 
 | File | Purpose |
 |---|---|
-| `snap_gui.py` | Interactive guide‑based annotation GUI (Tkinter + matplotlib) |
-| `snap_obb.py` | Batch auto‑snap / alignment (also importable) |
+| `snap_gui.py` | Interactive guide-based annotation GUI (Tkinter + matplotlib) |
+| `snap_obb.py` | Batch auto-snap / alignment (also importable) |
 | `snap_editor.py` | Minimal matplotlib editor (fallback) |
 
 ---

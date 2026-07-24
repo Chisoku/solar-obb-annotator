@@ -12,9 +12,7 @@ Label solar farms in the **YOLOv8-OBB** format, then auto-straighten every panel
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
 [![Stars](https://img.shields.io/github/stars/Chisoku/solar-obb-annotator?style=social)](https://github.com/Chisoku/solar-obb-annotator/stargazers)
 
-![guide-snap demo](assets/demo.gif)
-
-*Put guides on the panel edges → the corners snap onto the white borders.*
+![Solar OBB Annotator GUI](assets/gui.png)
 
 </div>
 
@@ -44,8 +42,6 @@ Hand/auto labels of solar panels are usually off by a few pixels at the corners,
 - ✋ Drag corners, ➕ add boxes, 🗑 delete boxes / individual guides.
 - **Undo / Redo** (`Ctrl+Z` / `Ctrl+Y`), spotlight hover, mark-as-done per image, delete image to trash.
 - Never overwrites your original labels — writes to a separate `labels_fixed/` folder.
-
-![GUI](assets/gui.png)
 
 ---
 
